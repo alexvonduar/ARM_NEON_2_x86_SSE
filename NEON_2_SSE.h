@@ -3484,7 +3484,7 @@ _NEON2SSE_INLINE int32x2_t vraddhn_s64(int64x2_t a, int64x2_t b)
     sum = _mm_add_epi64 (a, b);
     mask1 = _mm_slli_epi64(sum, 32); //shift left then back right to
     mask1 = _mm_srli_epi64(mask1,31); //get  31-th bit 1 or zero
-    sum = _mm_add_epi64 (sum, mask1); //actual high half rounding
+    sum = _mm_add_epi32 (sum, mask1); //actual high half rounding
     sum = _mm_shuffle_epi32(sum,  1 | (3 << 2) | (1 << 4) | (3 << 6));
     return64(sum);
 }
